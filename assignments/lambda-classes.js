@@ -9,7 +9,7 @@ class Person{
         this.age = attributes.age; 
     }
     speak(){
-        return `Hello my name is ${this.name}, I am from ${this.location}.`;
+        return `Hello my name is ${this.name}, and I am from ${this.location}.`;
     }
 }
 
@@ -36,7 +36,7 @@ class Student extends Person{
         this.favSubjects = studentAtts.favSubjects;
     }
     listSubjects(){
-        console.log(...this.favSubjects);
+         return`${this.favSubjects}`;
     }
     PRAssignment(){
         return `${this.name} has submitted a PR for ${subject}.`;
@@ -113,7 +113,7 @@ const kyle = new Student({
   });
 
 
-console.log(kyle.listSubjects("lunch"));// HTML CSS JavaScript
+console.log(kyle.listSubjects());// HTML, CSS, JavaScript
 console.log(kyle.sprintChallenge("JavaScript Fundamentals"));//Kyle has begun sprint challenge on JavaScript Fundamentals.
 console.log(tina.debugsCode("Ada", "class inheritance"));//Tina debugs Ada's code on class inheritance.
 console.log(marie.grade("Brit", "Advanced CSS"));//Brit receives a perfect score on Advanced CSS!

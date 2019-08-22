@@ -108,3 +108,59 @@ class Humanoid extends CharacterStats{
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+  class Villain extends Humanoid{
+    constructor(bad){
+        super(bad);
+        this.phrase = bad.phrase;
+    }
+    shout(){
+        return `${this.name} bellows, ${this.phrase}.`
+    }
+}
+
+class Hero extends Humanoid{
+  constructor(good){
+      super(good);
+      this.eat = good.eat;
+  }
+  recover(){
+      return `${this.name} eats ${this.eat} and gains ${this.healthPoints}.`
+  }
+}
+
+const lavaMonster = new Villain({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 3,
+    height: 6,
+  },
+  healthPoints: 22,
+  name: 'Molton',
+  team: 'Fire Kingdom',
+  weapons: [
+    'Magma',
+    'Raining Fire',
+  ],
+  language: 'Rock Mumbling',
+  phrase: "Burn it to the ground!"
+});
+
+const hunter = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 2,
+    height: 4,
+  },
+  healthPoints: 14,
+  name: 'Zeo',
+  team: 'Desert Tribe',
+  weapons: [
+    'Bow',
+    'Sword',
+  ],
+  language: 'English',
+  eat: "apples"
+});
