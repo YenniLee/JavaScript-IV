@@ -26,6 +26,10 @@ class Instructor extends Person{
     grade(student, subject){
         return `${student} receives a perfect score on ${subject}!`;
     }
+    randomGrade(student){
+        student.grade = student.grade + Math.floor(Math.random() * 10 + 1); 
+        return `${this.name} grades ${student.name}'s assignment and their class grade is now ${student.grade}/100.`
+    }
 }
 
 class Student extends Person{
@@ -34,6 +38,7 @@ class Student extends Person{
         this.previousBackground = studentAtts.previousBackground;
         this.className = studentAtts.className;
         this.favSubjects = studentAtts.favSubjects;
+        this.grade = studentAtts.grade;
     }
     listSubjects(){
          return`${this.favSubjects}`;
@@ -43,6 +48,13 @@ class Student extends Person{
     }
     sprintChallenge(subject){
         return `${this.name} has begun sprint challenge on ${subject}.`;
+    }
+    graduate(){
+        if (this.grade > 70) {
+            return `${this.name} can graduate!`
+        } else {
+            return `${this.name} has to work on their assignments before graduating.`
+        }
     }
 }
 
@@ -66,7 +78,8 @@ const kyle = new Student({
     age: 18,
     previousBackground: "beginner",
     className: "WEB22",
-    favSubjects: ["HTML", "CSS", "JavaScript"]
+    favSubjects: ["HTML", "CSS", "JavaScript"],
+    grade: 84
   });
 
   const ashley = new Student({
@@ -75,7 +88,8 @@ const kyle = new Student({
     age: 24,
     previousBackground: "marketing",
     className: "WEB23",
-    favSubjects: ["HTML", "CSS", "Python"]
+    favSubjects: ["HTML", "CSS", "Python"],
+    grade: 68
   });
 
   const fred = new Instructor({
@@ -122,4 +136,7 @@ console.log(marie.speak());//Hello my name is Marie, I am from Portland, OR.
 console.log(ashley.speak()); //Hello my name is Ashley, I am from Florida.
 console.log(fred.demo("flexbox")); //Today we are leaning about flexbox.
 
+console.log(fred.randomGrade(ashley));//Fred grades Ashley's assignment and their class grade is now 78/100.
+
+console.log(ashley.graduate());//Ashley can graduate!
 
