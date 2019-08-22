@@ -24,7 +24,7 @@ class Instructor extends Person{
         return `Today we are leaning about ${subject}.`
     }
     grade(student, subject){
-        console.log(`${student.name} receives a perfect score on ${subject}!`)
+        return `${student} receives a perfect score on ${subject}!`;
     }
 }
 
@@ -36,15 +36,13 @@ class Student extends Person{
         this.favSubjects = studentAtts.favSubjects;
     }
     listSubjects(){
-        return this.favSubjects.forEach(function(subject){
-            console.log(subject);
-        })
+        console.log(...this.favSubjects);
     }
     PRAssignment(){
-        console.log(`${student.name} has submitted a PR for ${subject}.`)
+        return `${this.name} has submitted a PR for ${subject}.`;
     }
-    sprintChallenge(){
-        console.log(`${student.name} has begun sprint challenge on ${subject}.`)
+    sprintChallenge(subject){
+        return `${this.name} has begun sprint challenge on ${subject}.`;
     }
 }
 
@@ -55,10 +53,10 @@ class ProjectManager extends Instructor{
         this.favInstructor = tlAtts.favInstructor;
     }
     standup(channel){
-        console.log(`${this.name} announces to ${channel}, @channel standy times!`)
+        return `${this.name} announces to ${channel}, @channel standy times!`;
     }
     debugsCode(student, subject){
-        console.log(`${this.name} debugs ${student.name}'s code on ${subject}.`)
+        return `${this.name} debugs ${student}'s code on ${subject}.`;
     }
 } 
 
@@ -115,13 +113,13 @@ const kyle = new Student({
   });
 
 
-console.log(kyle.listSubjects());
-console.log(ashley.speak());
-console.log(fred.demo());
-console.log(tina.debugsCode());
-console.log(max.standup());
-console.log(marie.grade());
-console.log(marie.speak());
-
+console.log(kyle.listSubjects("lunch"));// HTML CSS JavaScript
+console.log(kyle.sprintChallenge("JavaScript Fundamentals"));//Kyle has begun sprint challenge on JavaScript Fundamentals.
+console.log(tina.debugsCode("Ada", "class inheritance"));//Tina debugs Ada's code on class inheritance.
+console.log(marie.grade("Brit", "Advanced CSS"));//Brit receives a perfect score on Advanced CSS!
+console.log(max.standup("Web23"));//Max announces to Web23, @channel standy times!
+console.log(marie.speak());//Hello my name is Marie, I am from Portland, OR.
+console.log(ashley.speak()); //Hello my name is Ashley, I am from Florida.
+console.log(fred.demo("flexbox")); //Today we are leaning about flexbox.
 
 
